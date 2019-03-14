@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Sohoz 2048</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+<div class="container" id="mainVue" v-cloak>
+    <div class="heading">
+        <h1 class="title">2048</h1>
+        <div class="scores-container">
+            <div class="score-container">{{conf.score}}</div>
+            <div class="best-container">{{conf.bestScore}}</div>
+        </div>
+    </div>
+
+    <div class="above-game">
+        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <a class="restart-button" v-on="click: init">New Game</a>
+        <label class='left'>Select the number of tiles</label>
+
+        <select v-on="change: changesTilesSize" v-selected="conf.size">
+            <option value="4">4 tiles</option>
+            <option value="5">5 tiles</option>
+            <option value="6">6 tiles</option>
+        </select>
+    </div>
+
+    <div class="game-container" v-style="width:findDimension + 'px', height: findDimension + 'px'">
+        <div class="game-message">
+            <p></p>
+            <div class="lower">
+                <a class="keep-playing-button" v-on="click: clearMessage">Keep going</a>
+                <a class="retry-button" v-on="click: init">Try again</a>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <!-- Grid Here -->
+            <div v-repeat="grid" class="grid-row">
+                <div v-repeat="grid" class="grid-cell"></div>
+            </div>
+        </div>
+
+        <div class="tile-container" id="tile-container">
+
+            <div v-repeat="tiles" v-component="tile"
+                 v-style="$transform: 'translate(' + calcStyleX + 'px,' + calcStyleY + 'px)'"
+                 class="tile tile-{{value}} tile-new{{merged ? ' tile-merged' : ''}}">
+                <div class="tile-inner">{{value}}</div>
+            </div>
+
+        </div>
+
+    </div>
+    <p class="game-explanation">
+        <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two
+        tiles with the same number touch, they <strong>merge into one!</strong>
+    </p>
+
+</div>
+
+
+<script src="js/libs/vue.js"></script>
+<script src="js/keys.js"></script>
+<script src="js/store.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
