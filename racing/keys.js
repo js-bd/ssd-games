@@ -49,36 +49,6 @@ function KeyboardInputManager() {
       65: 3  // A
     };
   
-    // Respond to direction keys
-    // document.addEventListener("keydown", function (event) {
-  
-    //   var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
-    //                   event.shiftKey;
-    //   var mapped    = map[event.which];
-  
-    //   if (!modifiers) {
-    //     if (mapped !== undefined) {
-    //       event.preventDefault();
-    //       self.emit("move", mapped);
-    //       for(var i = 0; i <= 30; i += 5){
-    //         setTimeout(() => {
-    //           self.emit("move", mapped);
-    //         }, i);
-    //       }
-    //     }
-    //   }
-  
-    //   // R key restarts the game
-    //   if (!modifiers && event.which === 82) {
-    //     self.restart.call(self, event);
-    //   }
-    // });
-  
-    // Respond to button presses
-    // this.bindButtonPress(".retry-button", this.restart);
-    // this.bindButtonPress(".restart-button", this.restart);
-    // this.bindButtonPress(".keep-playing-button", this.keepPlaying);
-  
     // Respond to swipe events
     var touchStartClientX, touchStartClientY;
     // var gameContainer = document.getElementsByClassName("game-container")[0];
@@ -151,20 +121,3 @@ function KeyboardInputManager() {
       }
     });
   };
-  
-  // KeyboardInputManager.prototype.restart = function (event) {
-  //   event.preventDefault();
-  //   this.emit("restart");
-  // };
-  
-  // KeyboardInputManager.prototype.keepPlaying = function (event) {
-  //   event.preventDefault();
-  //   this.emit("keepPlaying");
-  // };
-  
-  // KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
-  //   var button = document.querySelector(selector);
-  //   button.addEventListener("click", fn.bind(this));
-  //   button.addEventListener(this.eventTouchend, fn.bind(this));
-  // };
-  

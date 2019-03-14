@@ -130,8 +130,10 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
         last = now;
         requestAnimationFrame(frame, canvas);
       }
+
       frame(); // lets get this party started
       Game.playMusic();
+
     });
   },
 
@@ -175,8 +177,15 @@ var Game = {  // a modified version of the game loop from my previous boulderdas
         }
       }
     };
-    Dom.on(document, 'keydown', function(ev) { onkey(ev.keyCode, 'down'); } );
-    Dom.on(document, 'keyup',   function(ev) { onkey(ev.keyCode, 'up');   } );
+
+    Dom.on(document, 'keydown', function(ev) { 
+      onkey(ev.keyCode, 'down'); 
+    } );
+    
+    Dom.on(document, 'keyup',   function(ev) { 
+      onkey(ev.keyCode, 'up');   
+    } );
+    
   },
 
   //---------------------------------------------------------------------------

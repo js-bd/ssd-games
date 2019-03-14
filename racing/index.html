@@ -133,8 +133,23 @@
 
     var keyLeft = false
     var keyRight = false
-    var keyFaster = false
+    var keyFaster = true
     var keySlower = false
+
+
+    // My Device Orientation Code
+
+    function handleOrientation(event) {
+        var x = event.beta;  // In degree in the range [-180,180]
+        var y = event.gamma; // In degree in the range [-90,90]
+        var z = event.alpha;
+
+        console.log('x: ', x);
+        console.log('y: ', y);
+        console.log('z: ', z);
+    }
+
+    window.addEventListener('deviceorientation', handleOrientation);
 
     var hud = {
         speed: {value: null, dom: Dom.get('speed_value')},
@@ -605,46 +620,66 @@
     //=========================================================================
 
     Game.run({
-        canvas: canvas, render: render, update: update, stats: stats, step: step,
+        canvas: canvas,
+        render: render,
+        update: update,
+        stats: stats,
+        step: step,
         images: ["background", "sprites"],
         keys: [
             {
-                keys: [KEY.LEFT, KEY.A], mode: 'down', action: function () {
+                keys: [KEY.LEFT, KEY.A], 
+                mode: 'down', 
+                action: function () {
                     keyLeft = true
                 }
             },
             {
-                keys: [KEY.RIGHT, KEY.D], mode: 'down', action: function () {
+                keys: [KEY.RIGHT, KEY.D], 
+                mode: 'down', 
+                action: function () {
                     keyRight = true
                 }
             },
             {
-                keys: [KEY.UP, KEY.W], mode: 'down', action: function () {
+                keys: [KEY.UP, KEY.W], 
+                mode: 'down', 
+                action: function () {
                     keyFaster = true
                 }
             },
             {
-                keys: [KEY.DOWN, KEY.S], mode: 'down', action: function () {
+                keys: [KEY.DOWN, KEY.S], 
+                mode: 'down', 
+                action: function () {
                     keySlower = true
                 }
             },
             {
-                keys: [KEY.LEFT, KEY.A], mode: 'up', action: function () {
+                keys: [KEY.LEFT, KEY.A], 
+                mode: 'up', 
+                action: function () {
                     keyLeft = false
                 }
             },
             {
-                keys: [KEY.RIGHT, KEY.D], mode: 'up', action: function () {
+                keys: [KEY.RIGHT, KEY.D], 
+                mode: 'up', 
+                action: function () {
                     keyRight = false
                 }
             },
             {
-                keys: [KEY.UP, KEY.W], mode: 'up', action: function () {
+                keys: [KEY.UP, KEY.W], 
+                mode: 'up', 
+                action: function () {
                     keyFaster = false
                 }
             },
             {
-                keys: [KEY.DOWN, KEY.S], mode: 'up', action: function () {
+                keys: [KEY.DOWN, KEY.S], 
+                mode: 'up', 
+                action: function () {
                     keySlower = false
                 }
             }
@@ -745,37 +780,33 @@
         Dom.get('currentFogDensity').innerHTML = Dom.get('fogDensity').value = fogDensity
     }
 
-    var Keys = new KeyboardInputManager()
+    // var Keys = new KeyboardInputManager()
+    // var keyAxis = [0, 0]
+    // Keys.on('move', function (direction) {
+    //     console.log(direction)
+    //     // Game.move(direction);
+    //     switch (direction) {
+    //         case 0:
+    //             console.log("Upper Direction")
+    //             keyAxis = [0, 1]
+    //             break
 
-    var keyAxis = [0, 0]
+    //         case 1:
+    //             console.log("Right Direction")
+    //             keyAxis = [1, 0]
+    //             break
 
-    Keys.on('move', function (direction) {
-        console.log(direction)
-        // Game.move(direction);
+    //         case 2:
+    //             console.log("Down Direction")
+    //             keyAxis = [0, -1]
+    //             break
 
-        switch (direction) {
-            case 0:
-                console.log("Upper Direction")
-                keyAxis = [0, 1]
-                break
-
-            case 1:
-                console.log("Right Direction")
-                keyAxis = [1, 0]
-                break
-
-            case 2:
-                console.log("Down Direction")
-                keyAxis = [0, -1]
-                break
-
-            case 3:
-                console.log("Left Direction")
-                keyAxis = [-1, 0]
-                break
-        }
-
-    })
+    //         case 3:
+    //             console.log("Left Direction")
+    //             keyAxis = [-1, 0]
+    //             break
+    //     }
+    // })
 
     //=========================================================================
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Orientation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        function handleOrientation(event) {
+            var absolute = event.absolute;
+            var alpha    = event.alpha;
+            var beta     = event.beta;
+            var gamma    = event.gamma; // x axis => right (+ve) => left => (-ve)
+
+            if(gamma > 10){
+                console.log('Gama Changed +ve: ', gamma);
+            } else if(gamma < -10){
+                console.log('Gama Changed -ve: ', gamma);
+            }
+        }
+
+        window.addEventListener('deviceorientation', handleOrientation);
+    </script>
+</body>
+</html>
