@@ -9,15 +9,15 @@
 <body>
     <script>
         function handleOrientation(event) {
-            var absolute = event.absolute;
-            var alpha    = event.alpha;
-            var beta     = event.beta;
-            var gamma    = event.gamma; // x axis => right (+ve) => left => (-ve)
+
+            let gamma    = event.gamma; // x axis => right (+ve) => left => (-ve)
 
             if(gamma > 10){
                 console.log('Gama Changed +ve: ', gamma);
+            } else if(gamma >= -10 && gamma <= 10){
+                console.log('Gama in range -10 to 10: ', gamma);
             } else if(gamma < -10){
-                console.log('Gama Changed -ve: ', gamma);
+                console.log('Game Changed -ve: ', gamma)
             }
         }
 
